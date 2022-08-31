@@ -21,17 +21,17 @@ class MainActivity : AppCompatActivity() {
     private fun hitung() {
         val berat = binding.etBerat.text.toString()
         if (TextUtils.isEmpty(berat)){
-            Toast.makeText(this,"Berat tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,getString(R.string.berat_message), Toast.LENGTH_SHORT).show()
             return
         }
         val tinggi = binding.etTinggi.text.toString()
         if (TextUtils.isEmpty(tinggi)){
-            Toast.makeText(this,"Tinggi tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,getString(R.string.tinggi_message), Toast.LENGTH_SHORT).show()
             return
         }
         val selectedId = binding.radioGroup.checkedRadioButtonId
         if (selectedId == -1){
-            Toast.makeText(this,"Jenis Kelamin tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,getString(R.string.gender_message), Toast.LENGTH_SHORT).show()
             return
         }
         val tinggiCm = tinggi.toFloat() / 100
