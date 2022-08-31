@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@null"
-        tools:srcCompat="@drawable/ayam" />
+        tools:srcCompat="@drawable/sapi" />
 
     <TextView
         android:id="@+id/tvHewan"
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textSize="20sp"
-        tools:text="Ayam" />
+        tools:text="Sapi" />
 
     <Button
         android:id="@+id/btnLanjut"

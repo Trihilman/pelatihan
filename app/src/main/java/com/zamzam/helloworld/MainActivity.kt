@@ -28,12 +28,11 @@ class MainActivity : AppCompatActivity() {
             add(Hewan("Sapi", R.drawable.sapi))
         }
         showData(dataHewan[0])
-//        Log.e("panjang data:", dataHewan.size.toString() )
-//        var count = 0
-//        button.setOnClickListener {
-//            count += 1
-//            showData(dataHewan[count])
-//        }
+        var count = 0
+        button.setOnClickListener {
+            count = (count + 1) % dataHewan.size
+            showData(dataHewan[count])
+        }
     }
 
     private fun showData(hewan: Hewan) {
