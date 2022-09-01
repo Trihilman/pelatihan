@@ -2,7 +2,6 @@ package com.zamzam.helloworld
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.zamzam.helloworld.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -14,7 +13,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Log.d("MainActivity", "Jumlah data: ${getData().size}")
+        binding.recyclerView.adapter = MainAdapter(getData())
+        binding.recyclerView.setHasFixedSize(true)
 
     }
 
