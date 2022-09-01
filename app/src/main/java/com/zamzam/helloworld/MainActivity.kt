@@ -2,6 +2,8 @@ package com.zamzam.helloworld
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import com.zamzam.helloworld.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,7 +15,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //menambahkan garis pemisah tiap list
+        val divider = DividerItemDecoration(this, RecyclerView.VERTICAL)
+        binding.recyclerView.addItemDecoration(divider)
+
+        //memberikan data ke main adapter untuk di tampilkan
         binding.recyclerView.adapter = MainAdapter(getData())
+
+        //membuat fix ukuran list
         binding.recyclerView.setHasFixedSize(true)
 
     }

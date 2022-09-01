@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Hello World</string>
-    <string name="lanjut">Lanjut</string>
+    <string name="x_diklik">%1$s diklik!</string>
 </resources>
