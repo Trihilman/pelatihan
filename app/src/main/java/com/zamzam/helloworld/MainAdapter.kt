@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zamzam.helloworld.DetailActivity.Companion.KEY_DIARY_ID
 import com.zamzam.helloworld.database.Diary
-import com.zamzam.helloworld.databinding.ActivityDetailBinding
 import com.zamzam.helloworld.databinding.ListItemBinding
 
 class MainAdapter : ListAdapter<Diary, MainAdapter.ViewHolder>(DIFF_CALLBACK) {

@@ -1,10 +1,7 @@
 package com.zamzam.helloworld.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 
 @Dao
 interface DiaryDao {
@@ -14,6 +11,9 @@ interface DiaryDao {
 
     @Update
     fun update(diary: Diary)
+
+    @Delete
+    fun delete(diary: Diary)
 
     @Query("SELECT * FROM diary ORDER BY id DESC")
     fun getDiaries(): LiveData<List<Diary>>
