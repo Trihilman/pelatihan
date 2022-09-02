@@ -13,7 +13,13 @@ import com.zamzam.helloworld.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
 
+    companion object {
+        const val KEY_DIARY_ID = "diaryId"
+    }
+
     private lateinit var binding: ActivityDetailBinding
+
+    private var selectedDiary: Diary? = null
 
     private val viewModel: DetailViewModel by lazy {
         val db = DiaryDb.getInstanse(this)
@@ -26,7 +32,23 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if (intent.hasExtra(KEY_DIARY_ID)) {
+            supportActionBar?.title = getString(R.string.edit_diary)
+            val diaryId = intent.getIntExtra(KEY_DIARY_ID, 0)
+            viewModel.getDiary(diaryId).observe(this) {
+                //TODO: set diary, tampilkan ke editText
+                selectedDiary = it
+                updateUI(it)
+            }
 
+        } else {
+            supportActionBar?.title = getString(R.string.tambah_activity)
+        }
+    }
+
+    private fun updateUI(diary: Diary) {
+        binding.etJudul.setText(diary.judul)
+        binding.etDiary.setText(diary.diary)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -36,13 +58,13 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.menuSimpan) {
-            insertDiary()
+            simpanDiary()
             return true
         }
         return false
     }
 
-    private fun insertDiary() {
+    private fun simpanDiary() {
         val judul = binding.etJudul.text.toString()
         if (TextUtils.isEmpty(judul)) {
             Toast.makeText(this, getString(R.string.message_judul), Toast.LENGTH_SHORT).show()
@@ -53,8 +75,18 @@ class DetailActivity : AppCompatActivity() {
             Toast.makeText(this, getString(R.string.message_diary), Toast.LENGTH_SHORT).show()
             return
         }
-        val data = Diary(judul = judul, diary = diary)
-        viewModel.insertDiary(data)
+
+        if (selectedDiary == null) {
+            val data = Diary(judul = judul, diary = diary)
+            viewModel.insertDiary(data)
+        }
+        else {
+            selectedDiary?.let {
+                it.judul = judul
+                it.diary = diary
+                viewModel.updateDiary(it)
+            }
+        }
         finish()
     }
 }
