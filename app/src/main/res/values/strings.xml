@@ -4,4 +4,5 @@
     <string name="tambah_activity">Tambah Diary</string>
     <string name="judul">Judul</string>
     <string name="isi_diary">Isi Diary</string>
+    <string name="simpan">Simpan</string>
 </resources>
