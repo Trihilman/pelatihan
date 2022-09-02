@@ -22,4 +22,12 @@
         android:layout_marginBottom="16dp"
         android:contentDescription="@string/tambah_diary"
         app:srcCompat="@drawable/ic_baseline_edit_24" />
+
+    <TextView
+        android:id="@+id/emptyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/kosong"
+        android:visibility="gone" />
 </FrameLayout>
