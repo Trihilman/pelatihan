@@ -25,6 +25,8 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
