@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Hello World</string>
-    <string name="tambah_diary">Tambah Diary</string>
+    <string name="tambah_diary">Tambah Diary Yuk!!!</string>
+    <string name="tambah_activity">Tambah Diary</string>
 </resources>
