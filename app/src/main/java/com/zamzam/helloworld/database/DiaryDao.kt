@@ -11,6 +11,6 @@ interface DiaryDao {
     @Insert
     fun insert(diary: Diary)
 
-    @Query("SELECT * FROM diary")
+    @Query("SELECT * FROM diary ORDER BY id DESC")
     fun getDiaries(): LiveData<List<Diary>>
 }

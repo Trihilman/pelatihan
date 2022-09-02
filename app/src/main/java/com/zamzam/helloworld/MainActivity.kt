@@ -3,8 +3,9 @@ package com.zamzam.helloworld
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import com.zamzam.helloworld.database.DiaryDb
 import com.zamzam.helloworld.databinding.ActivityMainBinding
 
@@ -28,8 +29,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val divider = DividerItemDecoration(this, RecyclerView.VERTICAL)
+        binding.recyclerView.addItemDecoration(divider)
+
+        val adapter = MainAdapter()
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.setHasFixedSize(true)
+
         viewModel.data.observe(this) {
-            Log.d("DATA", "Jumlah data: ${it.size}")
+            adapter.submitList(it)
         }
     }
 }
