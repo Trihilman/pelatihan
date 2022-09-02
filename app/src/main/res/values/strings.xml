@@ -2,4 +2,6 @@
     <string name="app_name">Hello World</string>
     <string name="tambah_diary">Tambah Diary Yuk!!!</string>
     <string name="tambah_activity">Tambah Diary</string>
+    <string name="judul">Judul</string>
+    <string name="isi_diary">Isi Diary</string>
 </resources>
