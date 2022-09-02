@@ -2,8 +2,10 @@ package com.zamzam.helloworld
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.zamzam.helloworld.database.Diary
 import com.zamzam.helloworld.database.DiaryDb
@@ -31,7 +33,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.menuSimpan){
+        if (item.itemId == R.id.menuSimpan) {
             insertDiary()
             return true
         }
@@ -40,7 +42,15 @@ class DetailActivity : AppCompatActivity() {
 
     private fun insertDiary() {
         val judul = binding.etJudul.text.toString()
+        if (TextUtils.isEmpty(judul)) {
+            Toast.makeText(this, getString(R.string.message_judul), Toast.LENGTH_SHORT).show()
+            return
+        }
         val diary = binding.etDiary.text.toString()
+        if (TextUtils.isEmpty(diary)) {
+            Toast.makeText(this, getString(R.string.message_diary), Toast.LENGTH_SHORT).show()
+            return
+        }
         val data = Diary(judul = judul, diary = diary)
         viewModel.insertDiary(data)
         finish()
